@@ -1,5 +1,5 @@
 function setup() {
-  console.log("testing")
+  console.log("testing reload")
   createCanvas(400, 400);
 }
 

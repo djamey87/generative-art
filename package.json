@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "dev": "browser-sync start --server -f -w"
   },
   "author": "djamey87",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.29.1",
+    "http-server": "^14.1.1"
+  }
 }
