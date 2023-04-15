@@ -2,7 +2,7 @@
 let ds;
 
 function setup() {
-  createCanvas(710, 400);
+  createCanvas(windowWidth, windowHeight);
   ds = new PenroseLSystem();
   //please, play around with the following line
   ds.simulate(5);
