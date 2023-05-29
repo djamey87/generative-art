@@ -21,7 +21,9 @@ window.addEventListener('load', function(){
       this.scale = 0.45;
       this.spread = Math.random() * 1.8 + 0.1;
       this.branches = 2;
-      this.color = 'hsl(' + Math.random() * 360 + ', 100%, 50%';
+      const randColor = Math.random() * 360;
+      this.color = 'hsl(' + randColor + ', 100%, 50%)';
+      ctx.shadowColor = 'hsl(' + (randColor + 40) + ', 100%, 50%)';
     }
 
     draw (context){
