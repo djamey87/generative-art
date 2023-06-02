@@ -2,17 +2,22 @@ window.addEventListener('load', function(){
   const canvas = document.getElementById('canvas1');
   const ctx = canvas.getContext('2d');
   const rootRadius = 25;
+  const spacing = rootRadius * 2.5;
 
-  canvas.width = 500;
-  canvas.height = 500;
+  canvas.width = document.documentElement.scrollWidth;
+  canvas.height = document.documentElement.scrollHeight;
+
+  const columns = canvas.width / (rootRadius);
+  const rows = canvas.height / (rootRadius);
+
   ctx.lineWidth = 3;
-  ctx.shadowOffsetY = ctx.lineWidth / 2;
-  ctx.shadowOffsetX = ctx.lineWidth / 2;
-  ctx.shadowBlur = ctx.lineWidth * 2.5;
+  // ctx.shadowOffsetY = ctx.lineWidth / 2;
+  // ctx.shadowOffsetX = ctx.lineWidth / 2;
+  // ctx.shadowBlur = ctx.lineWidth * 2.5;
 
   ctx.beginPath();
   ctx.rect(0,0, canvas.width, canvas.height);
-  ctx.fillStyle = "black";
+  ctx.fillStyle = "#03071e";
   ctx.fill();
 
   class Circle {
@@ -24,20 +29,18 @@ window.addEventListener('load', function(){
       this.scale = 0.45;
       this.spread = Math.random() * 1.8 + 0.1;
       
-      const randColor = Math.random() * 360;
-      // const randColor = 325;
-      this.color = 'hsl(' + randColor + ', 100%, 90%)';
-      ctx.shadowColor = 'hsl(' + (randColor + 40) + ', 100%, 50%)';
+      const randPerc = 10 + Math.random() * 70;
+      // const randColor = 0;
+      // this.color = 'hsl(' + randColor + ', 0%, 66%)';
+      this.color = 'hsl(3, 0%, '+randPerc+'%)';
+      // ctx.shadowColor = 'hsl(' + (randColor + 40) + ', 100%, 50%)';
     }
 
     draw (context){
       context.save();
       context.strokeStyle = this.color;
-      // context.translate(x, y);
 
       this.#drawCircle(context,0);
-
-      // context.restore();
     };
 
     #drawCircle(context, level){
@@ -54,21 +57,10 @@ window.addEventListener('load', function(){
     }
   }
 
-  const spacing = rootRadius * 2.5;
-  for (let i = 0; i < 10; i++) {
-    for (let j = 0; j < 10; j++) {
-      // console.log(`x: ${100 * j} y: ${200 * i}`)
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < columns; j++) {
       const circle = new Circle(rootRadius, spacing * j, spacing * i);
       circle.draw(ctx)
     }
-  }
-  
-
-  class Particle {
-
-  }
-
-  class Rain {
-
   }
 });
